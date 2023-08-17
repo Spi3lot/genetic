@@ -1,6 +1,6 @@
 package main;
 
-import domain.color_rect.ColorGeneration;
+import domain.color.ColorGeneration;
 import processing.core.PApplet;
 
 /**
@@ -11,7 +11,7 @@ public class GeneticAlgorithm extends PApplet {
 
     private static final int W = 192;
     private static final int H = 256;
-    private static final int GENERATION_SIZE = 10;
+    private static final int GENERATION_SIZE = 5;
     private static final float MUTATION_RATE = 0.1f;
     private static final float ELITISM_RATE = 0.1f;
     private final ColorGeneration[] generations = new ColorGeneration[W * H];

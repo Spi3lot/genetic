@@ -1,4 +1,4 @@
-package domain.color_rect;
+package domain.color;
 
 import domain.genetic.Generation;
 import main.GeneticAlgorithm;

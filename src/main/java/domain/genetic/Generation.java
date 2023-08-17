@@ -1,6 +1,7 @@
 package domain.genetic;
 
 import main.GeneticAlgorithm;
+import processing.core.PApplet;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -29,20 +30,19 @@ public abstract class Generation<T extends Individual> {
 
     public void evolve() {
         var sorted = Arrays.stream(individuals)
-                .sorted(Comparator.comparing(Evolvable::calcFitness))
+                .sorted(Comparator.comparing(Evolvable::calcFitness))  // ascending
                 .toArray(Individual[]::new);
 
         for (int i = 0; i < size; i++) {
-            var individual = sorted[i];
-
             if (ga.random(1) < elitismRate) {
-                individuals[i] = individual;
+                individuals[i] = sorted[i];
             } else {
-                int partnerIndex = randomWithout(size, i);
-                individuals[i] = (Individual) individual.crossover(sorted[partnerIndex]);
+                int motherIdx = (int) PApplet.sqrt(randomWithout(size * size, i));
+                int fatherIdx = (int) PApplet.sqrt(randomWithout(size * size, i, motherIdx));
+                individuals[i] = (Individual) sorted[motherIdx].crossover(sorted[fatherIdx]);
 
                 if (ga.random(1) < mutationRate) {
-                    individual.mutate();
+                    individuals[i].mutate();
                 }
             }
         }
@@ -58,14 +58,26 @@ public abstract class Generation<T extends Individual> {
         return random;
     }
 
+    private int randomWithout(int high, int without1, int without2) {
+        int random;
+
+        do {
+            random = (int) ga.random(0, high);
+        } while (random == without1 || random == without2);
+
+        return random;
+    }
+
     public final Individual[] getIndividuals() {
         return individuals;
     }
 
+    @SuppressWarnings("unchecked")
     public final T getIndividual(int index) {
         return (T) individuals[index];
     }
 
+    @SuppressWarnings("unchecked")
     public final T getFittestIndividual() {
         return (T) Arrays.stream(individuals)
                 .max(Comparator.comparing(Evolvable::calcFitness))
