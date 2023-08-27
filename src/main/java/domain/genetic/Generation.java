@@ -1,87 +1,67 @@
 package domain.genetic;
 
-import main.GeneticAlgorithm;
+import domain.random.Randomizer;
 import processing.core.PApplet;
+import processing.core.PVector;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
 
 /**
  * @author Emilio Zottel (4AHIF)
  * @since 15.08.2023, Di.
  */
-public abstract class Generation<T extends Individual> {
+public abstract class Generation<T extends Individual<T>> {
 
-    protected final GeneticAlgorithm ga;
+    private static final double PROBABILITY_EXPONENT = 10.0;
     protected final int size;
-    protected final float mutationRate;
-    protected final float elitismRate;
-    protected Individual[] individuals;
+    protected final int elitismCount;
+    protected final double mutationRate;
+    private final IntFunction<T[]> arrayConstructor;
+    private final Supplier<Integer> randomIndexSupplier;
+    protected T[] individuals;
+    private int genCount;
 
-    protected Generation(GeneticAlgorithm ga, int size, float mutationRate, float elitismRate) {
-        this.ga = ga;
+    protected Generation(IntFunction<T[]> arrayConstructor, int size, double mutationRate, double elitismPercentage) {
         this.size = size;
+        this.elitismCount = PApplet.constrain((int) (size * elitismPercentage), 1, size - 1);
         this.mutationRate = mutationRate;
-        this.elitismRate = elitismRate;
-        this.individuals = new Individual[size];
+        this.arrayConstructor = arrayConstructor;
+        this.individuals = arrayConstructor.apply(size);
+        this.randomIndexSupplier = () -> Randomizer.randomHigher(size, PROBABILITY_EXPONENT);
     }
-
-    public abstract void init();
 
     public void evolve() {
         var sorted = Arrays.stream(individuals)
-                .sorted(Comparator.comparing(Evolvable::calcFitness))  // ascending
-                .toArray(Individual[]::new);
+                .sorted(Comparator.comparing(Individual::getFitness))  // ascending
+                .toArray(arrayConstructor);
 
-        for (int i = 0; i < size; i++) {
-            if (ga.random(1) < elitismRate) {
-                individuals[i] = sorted[i];
-            } else {
-                int motherIdx = (int) PApplet.sqrt(randomWithout(size * size, i));
-                int fatherIdx = (int) PApplet.sqrt(randomWithout(size * size, i, motherIdx));
-                individuals[i] = (Individual) sorted[motherIdx].crossover(sorted[fatherIdx]);
+        System.arraycopy(sorted, size - elitismCount, individuals, size - elitismCount, elitismCount);
 
-                if (ga.random(1) < mutationRate) {
-                    individuals[i].mutate();
-                }
-            }
+        for (int i = 0; i < size - elitismCount; i++) {
+            int motherIdx = randomIndexSupplier.get();
+            int fatherIdx = Randomizer.randomWithout(motherIdx, randomIndexSupplier);
+            individuals[i] = sorted[motherIdx].crossover(sorted[fatherIdx]);
+            individuals[i].mutate(mutationRate);
         }
+
+        genCount++;
     }
 
-    private int randomWithout(int high, int without) {
-        int random;
-
-        do {
-            random = (int) ga.random(0, high);
-        } while (random == without);
-
-        return random;
+    public T getFittestIndividual() {
+        return Arrays.stream(individuals)
+                .max(Comparator.comparing(Individual::getFitness))
+                .orElseThrow();
     }
 
-    private int randomWithout(int high, int without1, int without2) {
-        int random;
-
-        do {
-            random = (int) ga.random(0, high);
-        } while (random == without1 || random == without2);
-
-        return random;
-    }
-
-    public final Individual[] getIndividuals() {
+    public final T[] getIndividuals() {
         return individuals;
     }
 
-    @SuppressWarnings("unchecked")
-    public final T getIndividual(int index) {
-        return (T) individuals[index];
-    }
-
-    @SuppressWarnings("unchecked")
-    public final T getFittestIndividual() {
-        return (T) Arrays.stream(individuals)
-                .max(Comparator.comparing(Evolvable::calcFitness))
-                .orElseThrow();
+    public final int getGenCount() {
+        return genCount;
     }
 
 }

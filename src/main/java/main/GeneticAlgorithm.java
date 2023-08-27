@@ -1,6 +1,6 @@
 package main;
 
-import domain.color.ColorGeneration;
+import domain.color.ImageGeneration;
 import processing.core.PApplet;
 
 /**
@@ -9,12 +9,12 @@ import processing.core.PApplet;
  */
 public class GeneticAlgorithm extends PApplet {
 
-    private static final int W = 192;
-    private static final int H = 256;
-    private static final int GENERATION_SIZE = 5;
+    private static final int W = 192 / 2;
+    private static final int H = 256 / 2;
+    private static final int GENERATION_SIZE = 100;
     private static final float MUTATION_RATE = 0.1f;
-    private static final float ELITISM_RATE = 0.1f;
-    private final ColorGeneration[] generations = new ColorGeneration[W * H];
+    private static final float ELITISM_PERCENTAGE = 0.1f;
+    private ImageGeneration generation;
 
     public static void main(String[] args) {
         PApplet.main("main.GeneticAlgorithm");
@@ -27,31 +27,26 @@ public class GeneticAlgorithm extends PApplet {
 
     @Override
     public void setup() {
-        noStroke();
-
         var image = loadImage("src/main/resources/shrek.jpg");
         image.resize(W, H);
-
-        for (int i = 0; i < generations.length; i++) {
-            generations[i] = new ColorGeneration(this, GENERATION_SIZE, MUTATION_RATE, ELITISM_RATE);
-            generations[i].setTargetColor(image.pixels[i]);
-            generations[i].init();
-        }
+        generation = new ImageGeneration(this, image, GENERATION_SIZE, MUTATION_RATE, ELITISM_PERCENTAGE);
     }
 
     @Override
     public void draw() {
-        loadPixels();
+        var fittestIndividual = generation.getFittestIndividual();
+        var fittestPixels = fittestIndividual.getPixels();
 
-        for (int i = 0; i < generations.length; i++) {
-            var generation = generations[i];
-            var individual = generation.getFittestIndividual();
-            var color = individual.getColorChromosome().getColor();
-            pixels[i] = color;
-            generation.evolve();
+        if (generation.getGenCount() % 100 == 0) {
+            System.out.println("Generation: " + generation.getGenCount() + " (" + fittestIndividual.getFitness() + ")");
         }
 
+        loadPixels();
+        System.arraycopy(fittestPixels, 0, pixels, 0, fittestPixels.length);
         updatePixels();
+
+        generation.evolve();
+
     }
 
 }

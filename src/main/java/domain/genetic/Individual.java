@@ -1,35 +1,29 @@
 package domain.genetic;
 
-import main.GeneticAlgorithm;
-
 /**
  * @author Emilio Zottel (4AHIF)
  * @since 15.08.2023, Di.
  */
-public abstract class Individual implements Evolvable {
+public abstract class Individual<T extends Individual<?>> {
 
-    protected final GeneticAlgorithm ga;
-    protected Chromosome[] chromosomes;
-
-    protected Individual(GeneticAlgorithm geneticAlgorithm) {
-        this.ga = geneticAlgorithm;
-    }
+    protected double fitness;
+    protected boolean isFitnessOutdated = true;
 
     public abstract void init();
 
-    protected <T extends Individual> void crossParentChromosomes(T a, T b) {
-        chromosomes = new Chromosome[a.chromosomes.length];
+    public abstract T crossover(T other);
 
-        for (int i = 0; i < chromosomes.length; i++) {
-            chromosomes[i] = (Chromosome) a.chromosomes[i].crossover(b.chromosomes[i]);
-        }
-    }
+    public abstract void mutate(double mutationRate);
 
-    @Override
-    public void mutate() {
-        for (var chromosome : chromosomes) {
-            chromosome.mutate();
+    protected abstract double calcFitness();
+
+    public double getFitness() {
+        if (isFitnessOutdated) {
+            isFitnessOutdated = false;
+            fitness = calcFitness();
         }
+
+        return fitness;
     }
 
 }
