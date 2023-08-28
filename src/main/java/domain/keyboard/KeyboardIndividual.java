@@ -3,10 +3,6 @@ package domain.keyboard;
 import domain.genetic.Individual;
 import domain.random.Randomizer;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * @author Emilio Zottel (4AHIF)
  * @since 25.08.2023, Fr.
@@ -27,35 +23,29 @@ public class KeyboardIndividual extends Individual<KeyboardIndividual> {
     }
 
     /**
-     * <code>1 - probabilty</code> because greater negative fitness means lower |fitness|
      * @param other individual to cross over with
      * @return child of this and other individual
      */
     @Override
     public KeyboardIndividual crossover(KeyboardIndividual other) {
         var child = new KeyboardIndividual(language);
+        var usedLetters = new boolean[language.getAlphabet().length()];
         var fitterIndividual = (getFitness() > other.getFitness()) ? this : other;
         var unfitterIndividual = (getFitness() > other.getFitness()) ? other : this;
         double combinedFitness = getFitness() + other.getFitness();
-        double fitterIndividiualProbability = 1 - fitterIndividual.getFitness() / combinedFitness;
-
-        var unusedLetters = language.getAlphabet()
-                .chars()
-                .mapToObj(c -> (char) c)
-                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
-                .toString();
+        double fitterIndividiualProbability = fitterIndividual.getFitness() / combinedFitness;
 
         for (int j = 0; j < language.getRowCount(); j++) {
             for (int i = 0; i < language.getColumnCount(j); i++) {
                 char letter;
 
                 if (Randomizer.RANDOM.nextDouble() < fitterIndividiualProbability) {
-                    letter = getLetter(fitterIndividual, j, i, unusedLetters);
+                    letter = getLetter(fitterIndividual, j, i, usedLetters);
                 } else {
-                    letter = getLetter(unfitterIndividual, j, i, unusedLetters);
+                    letter = getLetter(unfitterIndividual, j, i, usedLetters);
                 }
 
-                unusedLetters = unusedLetters.replace(letter + "", "");
+                usedLetters[language.getLetterIndex(letter)] = true;
                 child.layout.set(j, i, letter);
             }
         }
@@ -63,11 +53,11 @@ public class KeyboardIndividual extends Individual<KeyboardIndividual> {
         return child;
     }
 
-    private static char getLetter(KeyboardIndividual individual, int row, int col, String unusedLetters) {
+    private static char getLetter(KeyboardIndividual individual, int row, int col, boolean[] usedLetters) {
         char letter = individual.layout.get(row, col);
 
-        if (!unusedLetters.contains(letter + "")) {
-            letter = Randomizer.randomLetter(unusedLetters);
+        if (usedLetters[individual.language.getLetterIndex(letter)]) {
+            letter = individual.language.getAlphabet().charAt(Randomizer.randomFalseIndex(usedLetters));
         }
 
         return letter;
@@ -91,7 +81,10 @@ public class KeyboardIndividual extends Individual<KeyboardIndividual> {
 
     @Override
     protected double calcFitness() {
-        return -layout.totalTravelDistance(SampleText.get(language));
+        var chars = SampleText.getChars(language);
+        double lowestDistance = chars.length - 1;
+        double travelDistance = layout.totalTravelDistance(chars);
+        return lowestDistance / travelDistance;
     }
 
     @Override

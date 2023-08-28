@@ -1,0 +1,29 @@
+Generation: 1000
+Fitness of fittest: 0.48132488190056016
+[X, C, H, S, I, L, K, P, Ä, Y, Q]
+[Ü, B, T, E, N, D, O, W, V, Ö, J]
+[F, Z, G, R, U, A, M]
+
+Generation: 1000
+Fitness of fittest: 0.4781473235831082
+[X, Z, O, T, R, D, U, W, P, Y, Q]
+[V, K, B, S, E, N, A, M, F, Ä, J]
+[Ö, Ü, C, H, I, L, G]
+
+Generation: 1000
+Fitness of fittest: 0.47653040906671923
+[F, W, D, N, I, L, O, K, V, Y, J]
+[Z, U, T, E, S, R, H, C, Ü, Ä, Q]
+[Ö, X, B, G, A, M, P]
+
+Generation: 1000
+Fitness of fittest: 0.4716031301968558
+[Ö, Ü, B, L, I, T, H, C, K, X, J]
+[Ä, Z, U, D, N, E, S, O, P, V, Y]
+[Q, F, M, G, A, R, W]
+
+Generation: 1000
+Fitness of fittest: 0.46786929473970584
+[Y, P, C, H, L, I, D, A, W, Ä, Q]
+[V, K, O, T, S, E, N, U, M, F, J]
+[Ö, X, Ü, Z, B, R, G]

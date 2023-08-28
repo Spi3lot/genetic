@@ -2,7 +2,6 @@ package domain.genetic;
 
 import domain.random.Randomizer;
 import processing.core.PApplet;
-import processing.core.PVector;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -38,7 +37,7 @@ public abstract class Generation<T extends Individual<T>> {
                 .sorted(Comparator.comparing(Individual::getFitness))  // ascending
                 .toArray(arrayConstructor);
 
-        System.arraycopy(sorted, size - elitismCount, individuals, size - elitismCount, elitismCount);
+        individuals = sorted.clone();
 
         for (int i = 0; i < size - elitismCount; i++) {
             int motherIdx = randomIndexSupplier.get();
@@ -54,6 +53,13 @@ public abstract class Generation<T extends Individual<T>> {
         return Arrays.stream(individuals)
                 .max(Comparator.comparing(Individual::getFitness))
                 .orElseThrow();
+    }
+
+    public final void printFittest() {
+        T fittest = getFittestIndividual();
+        System.out.println("Generation: " + genCount);
+        System.out.println("Fitness of fittest: " + fittest.getFitness());
+        System.out.println(fittest);
     }
 
     public final T[] getIndividuals() {

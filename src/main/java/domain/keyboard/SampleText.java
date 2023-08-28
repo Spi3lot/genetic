@@ -10,23 +10,31 @@ import java.nio.file.Path;
  */
 public class SampleText {
 
-    private static final String[] texts = new String[Language.values().length];
+    private static final String PATH = "src/main/resources/keyboard/";
+    private static final char[][] TEXTS = new char[Language.values().length][];
 
     private SampleText() {
     }
 
-    public static String get(Language language) {
+    public static char[] getChars(Language language) {
         int idx = language.ordinal();
 
-        if (texts[idx] == null) {
+        if (TEXTS[idx] == null) {
             try {
-                texts[idx] = Files.readString(Path.of("src/main/resources/" + language.name() + ".txt"));
+                TEXTS[idx] = Files.readString(pathForLanguage(language))
+                        .toUpperCase()
+                        .replaceAll("[^" + language.getAlphabet() + "]", "")
+                        .toCharArray();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        return texts[idx];
+        return TEXTS[idx];
+    }
+
+    private static Path pathForLanguage(Language language) {
+        return Path.of(PATH + language.name() + ".txt");
     }
 
 }

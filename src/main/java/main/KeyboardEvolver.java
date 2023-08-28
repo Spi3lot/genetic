@@ -1,11 +1,8 @@
 package main;
 
-
 import domain.keyboard.KeyboardGeneration;
 import domain.keyboard.KeyboardIndividual;
-import domain.keyboard.KeyboardLayout;
 import domain.keyboard.Language;
-import domain.random.Randomizer;
 
 /**
  * @author Emilio Zottel (4AHIF)
@@ -24,20 +21,13 @@ public class KeyboardEvolver {
 
         for (int i = 0; i < MAX_GENERATIONS; i++) {
             if (i % 25 == 0) {
-                printFittest(generation);
+                generation.printFittest();
             }
 
             generation.evolve();
         }
 
-        printFittest(generation);
-    }
-
-    private static void printFittest(KeyboardGeneration generation) {
-        var fittest = generation.getFittestIndividual();
-        System.out.println("Generation: " + generation.getGenCount());
-        System.out.println("Fitness: " + fittest.getFitness());
-        System.out.println(fittest.getLayout());
+        generation.printFittest();
     }
 
     public static void test() {

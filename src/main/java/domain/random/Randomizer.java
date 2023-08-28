@@ -4,11 +4,7 @@ import domain.keyboard.KeyboardLayout;
 import domain.keyboard.Language;
 
 import java.util.Random;
-import java.util.concurrent.Callable;
-import java.util.function.IntSupplier;
 import java.util.function.Supplier;
-import java.util.function.ToIntBiFunction;
-import java.util.function.ToIntFunction;
 
 /**
  * @author Emilio Zottel (4AHIF)
@@ -63,6 +59,16 @@ public class Randomizer {
 
     public static char randomLetter(String s) {
         return s.charAt(RANDOM.nextInt(s.length()));
+    }
+
+    public static int randomFalseIndex(boolean[] arr) {
+        int idx;
+
+        do {
+            idx = RANDOM.nextInt(arr.length);
+        } while (arr[idx]);
+
+        return idx;
     }
 
 }

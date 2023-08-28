@@ -5,31 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac5c988d-695e-423b-bf10-d402f0e3229f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/color/ImageIndividual.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardGeneration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardIndividual.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardRowOffset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/Language.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/SampleText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/random/Randomizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/KeyboardEvolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/english.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/german.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/color/ColorChromosome.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/color/ColorGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/color/ImageGeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/color/ColorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/genetic/Chromosome.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/genetic/Evolvable.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/keyboard/englishKeyboards.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/keyboard/germanKeyboards.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/genetic/Generation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/genetic/Generation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/genetic/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/genetic/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/GeneticAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardIndividual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardIndividual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/Language.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/SampleText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/SampleText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/random/Randomizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/random/Randomizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/KeyboardEvolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/KeyboardEvolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/english.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keyboard/english.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/german.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keyboard/german.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +61,8 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
@@ -80,6 +70,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="domain.keyboard" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\emili\OneDrive\PROGRAMS\important\Processing\PROGRAMS\Java\CPU\GeneticAlgorithm\src\main\resources\keyboard" />
     </key>
   </component>
   <component name="RunManager" selected="Application.KeyboardEvolver">
@@ -128,11 +121,16 @@
       <workItem from="1692913313655" duration="36000" />
       <workItem from="1692913420157" duration="14702000" />
       <workItem from="1692956661006" duration="650000" />
-      <workItem from="1693061412417" duration="28175000" />
+      <workItem from="1693061412417" duration="28742000" />
+      <workItem from="1693142796576" duration="19346000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
