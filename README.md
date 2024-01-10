@@ -1,1 +1,1 @@
-Implementation of a simple Genetic Algorithm, including tests
+**Implementation of a simple Genetic Algorithm, including tests**
