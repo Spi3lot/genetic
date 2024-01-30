@@ -2,20 +2,23 @@ package domain.random;
 
 import domain.keyboard.KeyboardLayout;
 import domain.keyboard.Language;
+import domain.music.Note;
+import domain.music.Song;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Random;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * @author Emilio Zottel (4AHIF)
  * @since 21.08.2023, Mo.
  */
+@NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
 public class Randomizer {
 
     public static final Random RANDOM = new Random();
-
-    private Randomizer() {
-    }
 
     public static int nextColor() {
         return 0xFF000000 | RANDOM.nextInt(0x01000000);
@@ -40,16 +43,13 @@ public class Randomizer {
     }
 
     public static void randomizeKeyboardLayout(KeyboardLayout layout) {
-        for (char letter : layout.getLanguage().getAlphabet().toCharArray()) {
-            int row;
-            int col;
+        var letters = layout.getLanguage()
+                .getLetters();
 
-            do {
-                row = RANDOM.nextInt(layout.getLanguage().getRowCount());
-                col = RANDOM.nextInt(layout.getLanguage().getColumnCount(row));
-            } while (layout.get(row, col) != 0);
-
-            layout.set(row, col, letter);
+        for (int j = 0; j < layout.getLanguage().getRowCount(); j++) {
+            for (int i = 0; i < layout.getLanguage().getColumnCount(j); i++) {
+                layout.set(j, i, choose(letters, true));
+            }
         }
     }
 
@@ -61,14 +61,39 @@ public class Randomizer {
         return s.charAt(RANDOM.nextInt(s.length()));
     }
 
-    public static int randomFalseIndex(boolean[] arr) {
+    public static int randomFalseIndex(boolean[] array) {
         int idx;
 
         do {
-            idx = RANDOM.nextInt(arr.length);
-        } while (arr[idx]);
+            idx = RANDOM.nextInt(array.length);
+        } while (array[idx]);
 
         return idx;
+    }
+
+    public static void randomizeSong(Song song) {
+        for (int i = 0; i < song.getNoteCount(); i++) {
+            song.setNote(i, randomNote(song.getNoteCount()));
+        }
+    }
+
+    public static Note randomNote(int noteCount) {
+        return new Note(
+                RANDOM.nextDouble(100, 1000),
+                RANDOM.nextDouble(0.1, 1),
+                RANDOM.nextDouble(0, noteCount),
+                RANDOM.nextDouble(0.1, 1)
+        );
+    }
+
+    public static <T> T choose(List<T> options, boolean remove) {
+        var choice = options.get(RANDOM.nextInt(options.size()));
+
+        if (remove) {
+            options.remove(choice);
+        }
+
+        return choice;
     }
 
 }

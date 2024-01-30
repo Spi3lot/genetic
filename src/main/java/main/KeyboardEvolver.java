@@ -1,5 +1,6 @@
 package main;
 
+import domain.keyboard.KeyPosition;
 import domain.keyboard.KeyboardGeneration;
 import domain.keyboard.KeyboardIndividual;
 import domain.keyboard.Language;
@@ -10,24 +11,33 @@ import domain.keyboard.Language;
  */
 public class KeyboardEvolver {
 
-    private static final Language LANGUAGE = Language.ENGLISH;
     private static final int MAX_GENERATIONS = 1000;
-    private static final int POPULATION_SIZE = 50;
+    private static final int POPULATION_SIZE = 500;
     private static final double MUTATION_RATE = 0.1;
     private static final double ELITISM_RATE = 0.1;
+    private static final Language LANGUAGE = Language.GERMAN;
+    private static final KeyboardGeneration GENERATION = new KeyboardGeneration(LANGUAGE, POPULATION_SIZE, MUTATION_RATE, ELITISM_RATE);
 
     public static void main(String[] args) {
-        var generation = new KeyboardGeneration(LANGUAGE, POPULATION_SIZE, MUTATION_RATE, ELITISM_RATE);
+        long startTime = System.currentTimeMillis();
 
         for (int i = 0; i < MAX_GENERATIONS; i++) {
             if (i % 25 == 0) {
-                generation.printFittest();
+                System.out.println(STR."\{System.currentTimeMillis() - startTime} ms");
+                startTime = System.currentTimeMillis();
+                printFittest();
             }
 
-            generation.evolve();
+            GENERATION.evolve();
         }
 
-        generation.printFittest();
+        printFittest();
+    }
+
+    private static void printFittest() {
+        var fittest = GENERATION.getFittestIndividual();
+        System.out.println("Generation " + GENERATION.getGenCount() + ": " + fittest.getFitness());
+        System.out.println(fittest.getLayout());
     }
 
     public static void test() {

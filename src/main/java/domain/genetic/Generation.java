@@ -23,13 +23,18 @@ public abstract class Generation<T extends Individual<T>> {
     protected T[] individuals;
     private int genCount;
 
-    protected Generation(IntFunction<T[]> arrayConstructor, int size, double mutationRate, double elitismPercentage) {
+    protected Generation(int size, double mutationRate, double elitismPercentage, IntFunction<T[]> arrayConstructor, Supplier<T> individualSupplier) {
         this.size = size;
         this.elitismCount = PApplet.constrain((int) (size * elitismPercentage), 1, size - 1);
         this.mutationRate = mutationRate;
         this.arrayConstructor = arrayConstructor;
-        this.individuals = arrayConstructor.apply(size);
         this.randomIndexSupplier = () -> Randomizer.randomHigher(size, PROBABILITY_EXPONENT);
+        this.individuals = arrayConstructor.apply(size);
+
+        for (int i = 0; i < size; i++) {
+            individuals[i] = individualSupplier.get();
+            individuals[i].init();
+        }
     }
 
     public void evolve() {
@@ -53,13 +58,6 @@ public abstract class Generation<T extends Individual<T>> {
         return Arrays.stream(individuals)
                 .max(Comparator.comparing(Individual::getFitness))
                 .orElseThrow();
-    }
-
-    public final void printFittest() {
-        T fittest = getFittestIndividual();
-        System.out.println("Generation: " + genCount);
-        System.out.println("Fitness of fittest: " + fittest.getFitness());
-        System.out.println(fittest);
     }
 
     public final T[] getIndividuals() {

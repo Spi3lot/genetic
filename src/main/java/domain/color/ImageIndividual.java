@@ -2,6 +2,7 @@ package domain.color;
 
 import domain.genetic.Individual;
 import domain.random.Randomizer;
+import lombok.Getter;
 import main.GeneticAlgorithm;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -15,12 +16,18 @@ public class ImageIndividual extends Individual<ImageIndividual> {
 
     private final GeneticAlgorithm ga;
     private final PImage image;
+
+    @Getter
     private final int[] pixels;
 
     public ImageIndividual(GeneticAlgorithm ga, PImage image) {
         this.ga = ga;
         this.image = image;
         this.pixels = new int[image.width * image.height];
+    }
+
+    private static PVector colorToVector(int color) {
+        return new PVector(color >> 16 & 0xFF, color >> 8 & 0xFF, color & 0xFF);
     }
 
     @Override
@@ -64,14 +71,6 @@ public class ImageIndividual extends Individual<ImageIndividual> {
 
         fitness /= pixels.length;
         return fitness;
-    }
-
-    public int[] getPixels() {
-        return pixels;
-    }
-
-    private static PVector colorToVector(int color) {
-        return new PVector(color >> 16 & 0xFF, color >> 8 & 0xFF, color & 0xFF);
     }
 
 }

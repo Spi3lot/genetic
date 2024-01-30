@@ -1,5 +1,7 @@
 package domain.keyboard;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 
 /**
@@ -9,12 +11,15 @@ import java.util.Arrays;
 public class KeyboardLayout {
 
     private final char[][] layout;
-    private final Position[] positions;
+
+    private final KeyPosition[] positions;
+
+    @Getter
     private final Language language;
 
     public KeyboardLayout(Language language) {
         this.language = language;
-        this.positions = new Position[language.getAlphabet().length()];
+        this.positions = new KeyPosition[language.getAlphabet().length()];
         this.layout = new char[language.getRowCount()][];
 
         for (int j = 0; j < layout.length; j++) {
@@ -48,7 +53,7 @@ public class KeyboardLayout {
     }
 
     public double distance(char letter1, char letter2) {
-        return Position.distance(getLetterPosition(letter1), getLetterPosition(letter2));
+        return KeyPosition.distance(getLetterPosition(letter1), getLetterPosition(letter2));
     }
 
     public char get(int row, int col) {
@@ -57,15 +62,19 @@ public class KeyboardLayout {
 
     public void set(int row, int col, char letter) {
         layout[row][col] = letter;
-        positions[language.getLetterIndex(letter)] = new Position(row, col);
+        positions[language.getLetterIndex(letter)] = new KeyPosition(row, col);
     }
 
-    private Position getLetterPosition(char letter) {
+    public void setAll(char[][] layout) {
+        for (int j = 0; j < layout.length; j++) {
+            for (int i = 0; i < layout[j].length; i++) {
+                set(j, i, layout[j][i]);
+            }
+        }
+    }
+
+    private KeyPosition getLetterPosition(char letter) {
         return positions[language.getLetterIndex(letter)];
-    }
-
-    public Language getLanguage() {
-        return language;
     }
 
     @Override

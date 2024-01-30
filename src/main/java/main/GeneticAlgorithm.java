@@ -17,7 +17,7 @@ public class GeneticAlgorithm extends PApplet {
     private ImageGeneration generation;
 
     public static void main(String[] args) {
-        PApplet.main("main.GeneticAlgorithm");
+        PApplet.main(GeneticAlgorithm.class);
     }
 
     @Override
@@ -38,15 +38,13 @@ public class GeneticAlgorithm extends PApplet {
         var fittestPixels = fittestIndividual.getPixels();
 
         if (generation.getGenCount() % 100 == 0) {
-            System.out.println("Generation: " + generation.getGenCount() + " (" + fittestIndividual.getFitness() + ")");
+            System.out.println(STR."Generation: \{generation.getGenCount()} (\{fittestIndividual.getFitness()})");
         }
 
         loadPixels();
         System.arraycopy(fittestPixels, 0, pixels, 0, fittestPixels.length);
         updatePixels();
-
         generation.evolve();
-
     }
 
 }

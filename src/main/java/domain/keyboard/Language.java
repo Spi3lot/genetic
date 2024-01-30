@@ -1,7 +1,11 @@
 package domain.keyboard;
 
+import lombok.Getter;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Emilio Zottel (4AHIF)
@@ -12,24 +16,21 @@ public enum Language {
     ENGLISH("QWERTYUIOPASDFGHJKLZXCVBNM", 10, 9, 7),
     GERMAN("QWERTZUIOPÜASDFGHJKLÖÄYXCVBNM", 11, 11, 7);
 
+    @Getter
     private final String alphabet;
-    private final char[] alphabetA;
+
     private final int[] columnCounts;
+
     private final Map<Character, Integer> letterPositions;
 
     Language(String alphabet, int... columnCounts) {
         this.alphabet = alphabet;
-        alphabetA = alphabet.toCharArray();
         this.columnCounts = columnCounts;
         this.letterPositions = HashMap.newHashMap(alphabet.length());
 
         for (int i = 0; i < alphabet.length(); i++) {
             letterPositions.put(alphabet.charAt(i), i);
         }
-    }
-
-    public String getAlphabet() {
-        return alphabet;
     }
 
     public int getRowCount() {
@@ -44,7 +45,10 @@ public enum Language {
         return letterPositions.get(letter);
     }
 
-    public char[] getAlphabetArray() {
-        return alphabetA;
+    public List<Character> getLetters() {
+        return alphabet.chars()
+                .mapToObj(i -> (char) i)
+                .collect(Collectors.toList());
     }
+
 }

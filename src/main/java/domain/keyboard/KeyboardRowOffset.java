@@ -9,8 +9,8 @@ public class KeyboardRowOffset {
     private KeyboardRowOffset() {
     }
 
-    public static double shift(int row) {
-        return forRow(row) + row;
+    public static double shiftColumn(int row, int col) {
+        return forRow(row) + col;
     }
 
     public static double forRow(int row) {

@@ -1,11 +1,4 @@
-Generation: 1000
-Fitness of fittest: 0.4508910737566698 (≙-250273.30672085792)
-[V, W, H, T, I, N, G, F, Z, Q]
-[K, C, A, E, S, O, D, U, J]
-[X, P, M, R, L, Y, B]
-
-Generation: 1000
-Fitness of fittest: 0.44386743825474145
-[V, D, H, T, O, W, F, J, X, Q]
-[G, N, I, E, R, U, Y, P, Z]
-[K, C, S, A, L, M, B]
+Generation 1000: 0.4323912982086364
+V W H T I N G F Z Q
+K C A E S O D U J
+X P M R L Y B

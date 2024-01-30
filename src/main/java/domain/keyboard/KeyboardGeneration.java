@@ -9,12 +9,7 @@ import domain.genetic.Generation;
 public class KeyboardGeneration extends Generation<KeyboardIndividual> {
 
     public KeyboardGeneration(Language language, int size, double mutationRate, double elitismPercentage) {
-        super(KeyboardIndividual[]::new, size, mutationRate, elitismPercentage);
-
-        for (int i = 0; i < size; i++) {
-            individuals[i] = new KeyboardIndividual(language);
-            individuals[i].init();
-        }
+        super(size, mutationRate, elitismPercentage, KeyboardIndividual[]::new, () -> new KeyboardIndividual(language));
     }
 
 }

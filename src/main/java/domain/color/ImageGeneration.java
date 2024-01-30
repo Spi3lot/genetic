@@ -11,12 +11,7 @@ import processing.core.PImage;
 public class ImageGeneration extends Generation<ImageIndividual> {
 
     public ImageGeneration(GeneticAlgorithm ga, PImage image, int size, float mutationRate, float elitismPercentage) {
-        super(ImageIndividual[]::new, size, mutationRate, elitismPercentage);
-
-        for (int i = 0; i < size; i++) {
-            individuals[i] = new ImageIndividual(ga, image);
-            individuals[i].init();
-        }
+        super(size, mutationRate, elitismPercentage, ImageIndividual[]::new, () -> new ImageIndividual(ga, image));
     }
 
 }
