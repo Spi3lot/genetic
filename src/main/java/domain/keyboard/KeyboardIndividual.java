@@ -5,7 +5,7 @@ import domain.random.Randomizer;
 import lombok.Getter;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 /**
  * @author Emilio Zottel (4AHIF)
@@ -51,6 +51,7 @@ public class KeyboardIndividual extends Individual<KeyboardIndividual> {
                     letter = getLetter(unfitterIndividual, j, i, unusedLetters);
                 }
 
+                unusedLetters.remove((Character) letter);
                 child.layout.set(j, i, letter);
             }
         }
@@ -62,7 +63,7 @@ public class KeyboardIndividual extends Individual<KeyboardIndividual> {
         char letter = individual.layout.get(row, col);
 
         if (!unusedLetters.contains(letter)) {
-            letter = Randomizer.choose(unusedLetters, true);
+            letter = Randomizer.choose(unusedLetters, false);
         }
 
         return letter;

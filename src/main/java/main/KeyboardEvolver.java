@@ -36,7 +36,7 @@ public class KeyboardEvolver {
 
     private static void printFittest() {
         var fittest = GENERATION.getFittestIndividual();
-        System.out.println("Generation " + GENERATION.getGenCount() + ": " + fittest.getFitness());
+        System.out.println(STR."Generation \{GENERATION.getGenCount()}: \{fittest.getFitness()}");
         System.out.println(fittest.getLayout());
     }
 
