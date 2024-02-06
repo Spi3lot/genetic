@@ -40,9 +40,11 @@ public class ImageIndividual extends Individual<ImageIndividual> {
     @Override
     public ImageIndividual crossover(ImageIndividual o) {
         var child = new ImageIndividual(ga, image);
+        double difference = o.getFitness() - getFitness();
+        double t = Math.copySign(Math.pow(Math.abs(difference), 0.2), difference);
 
         for (int i = 0; i < pixels.length; i++) {
-            child.pixels[i] = ga.lerpColor(pixels[i], o.pixels[i], (float) (o.getFitness() - getFitness()));
+            child.pixels[i] = ga.lerpColor(pixels[i], o.pixels[i], (float) t);
         }
 
         return child;
@@ -69,8 +71,7 @@ public class ImageIndividual extends Individual<ImageIndividual> {
             //fitness += 1 - diff * diff;  // easier to get better fitness
         }
 
-        fitness /= pixels.length;
-        return fitness;
+        return fitness / pixels.length;
     }
 
 }

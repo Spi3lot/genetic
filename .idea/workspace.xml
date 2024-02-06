@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac5c988d-695e-423b-bf10-d402f0e3229f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/music/Note.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/music/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/music/Song.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/music/SongGeneration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/music/SongIndividual.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/seat/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/seat/SeatingArrangementIndividual.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/seat/Team.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/GeneticMusic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/color/ImageGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/color/ImageGeneration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/color/ImageIndividual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/color/ImageIndividual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/genetic/Generation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/genetic/Generation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/genetic/Individual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/genetic/Individual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardGeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardIndividual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardIndividual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/KeyboardLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/Language.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/keyboard/SampleText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/keyboard/SampleText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/random/Randomizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/random/Randomizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/KeyboardEvolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/KeyboardEvolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/keyboard/englishKeyboards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keyboard/englishKeyboards.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/keyboard/germanKeyboards.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keyboard/germanKeyboards.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,32 +36,32 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GeneticAlgorithm.executor": "Run",
-    "Application.GeneticMusic.executor": "Run",
-    "Application.KeyboardEvolver.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/emili/OneDrive/PROGRAMS/important/IntelliJ/FUN_2022_23/Cloudflight",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15347016",
-    "project.structure.side.proportion": "0.27367204",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "show.migrate.to.gradle.popup": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GeneticAlgorithm.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GeneticMusic.executor&quot;: &quot;Run&quot;,
+    &quot;Application.KeyboardEvolver.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/emili/OneDrive/PROGRAMS/important/IntelliJ/FUN_2022_23/Cloudflight&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15347016&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.27367204&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="domain.keyboard" />
@@ -94,7 +70,7 @@
       <recent name="C:\Users\emili\OneDrive\PROGRAMS\important\Processing\PROGRAMS\Java\CPU\GeneticAlgorithm\src\main\resources\keyboard" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.KeyboardEvolver">
+  <component name="RunManager" selected="Application.GeneticAlgorithm">
     <configuration name="GeneticAlgorithm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.GeneticAlgorithm" />
       <module name="GeneticAlgorithm" />
@@ -136,8 +112,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.KeyboardEvolver" />
         <item itemvalue="Application.GeneticAlgorithm" />
+        <item itemvalue="Application.KeyboardEvolver" />
         <item itemvalue="Application.GeneticMusic" />
       </list>
     </recent_temporary>
@@ -169,7 +145,8 @@
       <workItem from="1693398636334" duration="2289000" />
       <workItem from="1693440200133" duration="614000" />
       <workItem from="1693752235531" duration="48000" />
-      <workItem from="1706636306921" duration="10716000" />
+      <workItem from="1706636306921" duration="10975000" />
+      <workItem from="1707256687187" duration="991000" />
     </task>
     <servers />
   </component>
